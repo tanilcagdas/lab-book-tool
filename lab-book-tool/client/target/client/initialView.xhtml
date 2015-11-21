@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich">
+
+<head>
+
+
+<title>Lab Devices</title>
+</head>
+<body >
+
+<center><h1>LabBook</h1></center>
+
+
+
+
+
+
+
+
+
+
+<f:view>
+<h:form>
+
+
+		<rich:tabPanel switchType="client" rendered="#{indexBean.userLoggedIn}">
+
+				<rich:tab label="devices" name="Devices">
+					<f:subview id="Devices">
+						<ui:include page="devices.xhtml" />
+					</f:subview>
+				</rich:tab>
+				
+				<rich:tab label="laptops" name="Laptops">
+					<f:subview id="Laptops">
+						<ui:include page="laptops.xhtml" />
+					</f:subview>
+				</rich:tab>
+
+			</rich:tabPanel>			
+
+</h:form>
+ <center>
+
+<h:panelGroup><h:outputText value="#{indexBean.loginUserName}" ></h:outputText>
+
+	<h:commandButton action="#{indexBean.logout}" value="logout" ></h:commandButton>
+		
+
+	</h:panelGroup>
+	</center>
+
+	
+</f:view>
+
+
+
+
+</body>
+</html>

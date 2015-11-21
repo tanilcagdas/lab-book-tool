@@ -1,0 +1,3 @@
+deploy client and rest
+start tomcat
+url: http://localhost:8080/client/faces/index.xhtmls

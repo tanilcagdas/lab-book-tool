@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13036648479890" configfile="/labBookTool/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="addCustomer" x="122" y="178" id="pf13036649091131" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13036649091132" path="/addCustomer.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="listCustomers" x="338" y="178" id="pf13036649091133" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13036649091132" path="/listCustomers.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="indexJSF" x="120" y="344" id="pf13036649091134" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf13036650729405" inlinks="pf13037321974347" path="/indexJSF.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="DevicesJSF" x="360" y="360" id="pf13036650729406" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" outlinks="pf13037321974347" inlinks="pf13036650729405" path="/DevicesJSF.jsp"/>
+  <links id="pf13036649091132" target="pf13036649091133" source="pf13036649091131" outcome="success"/>
+  <links id="pf13036650729405" target="pf13036650729406" source="pf13036649091134" outcome="loginSuccess"/>
+  <links id="pf13037321974347" target="pf13036649091134" source="pf13036650729406" outcome="logoutSuccess"/>
+</pageflow:Pageflow>

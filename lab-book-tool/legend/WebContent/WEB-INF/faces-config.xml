@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+    version="1.2">
+	<managed-bean>
+		<managed-bean-name>customerBean</managed-bean-name>
+		<managed-bean-class>com.thescreencast.web.CustomerBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>indexBean</managed-bean-name>
+		<managed-bean-class>com.lab.controller.IndexBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+		<managed-bean>
+		<managed-bean-name>Controller</managed-bean-name>
+		<managed-bean-class>com.lab.controller.Controller</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+		<managed-bean>
+		<managed-bean-name>DevicesBB</managed-bean-name>
+		<managed-bean-class>DevicesBB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<display-name>addCustomer</display-name>
+		<from-view-id>/addCustomer.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/listCustomers.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>indexJSF</display-name>
+		<from-view-id>/indexJSF.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>loginSuccess</from-outcome>
+			<to-view-id>/initialView.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>DevicesJSF</display-name>
+		<from-view-id>/DevicesJSF.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logoutSuccess</from-outcome>
+			<to-view-id>/indexJSF.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>

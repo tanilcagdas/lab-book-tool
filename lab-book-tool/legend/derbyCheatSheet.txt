@@ -1,0 +1,76 @@
+
+ij> connect 'jdbc:derby:LabDB;';
+ij(CONNECTION1)> show tables;
+TABLE_SCHEM         |TABLE_NAME                    |REMARKS
+------------------------------------------------------------------------
+SYS                 |SYSALIASES                    |
+SYS                 |SYSCHECKS                     |
+SYS                 |SYSCOLPERMS                   |
+SYS                 |SYSCOLUMNS                    |
+SYS                 |SYSCONGLOMERATES              |
+SYS                 |SYSCONSTRAINTS                |
+SYS                 |SYSDEPENDS                    |
+SYS                 |SYSFILES                      |
+SYS                 |SYSFOREIGNKEYS                |
+SYS                 |SYSKEYS                       |
+SYS                 |SYSROLES                      |
+SYS                 |SYSROUTINEPERMS               |
+SYS                 |SYSSCHEMAS                    |
+SYS                 |SYSSTATEMENTS                 |
+SYS                 |SYSSTATISTICS                 |
+SYS                 |SYSTABLEPERMS                 |
+SYS                 |SYSTABLES                     |
+SYS                 |SYSTRIGGERS                   |
+SYS                 |SYSVIEWS                      |
+SYSIBM              |SYSDUMMY1                     |
+APP                 |CONTACT                       |
+APP                 |DEVICES                       |
+APP                 |LAPTOPS                       |
+APP                 |USERS                         |
+APP                 |VERSIONS                      |
+
+25 rows selected
+ij(CONNECTION1)> ij(CONNECTION1)>
+
+
+ij(CONNECTION1)> ij(CONNECTION1)> select * from laptops
+> ;
+ID         |NAME            |PASSWORD       |OS          |STATUS
+-------------------------------------------------------------------------
+
+0 rows selected
+ij(CONNECTION1)> select * from users;
+ID         |NAME            |PASSWORD       |EMAIL
+---------------------------------------------------------------------------
+3          |admin           |admin          |
+
+1 row selected
+ij(CONNECTION1)> select * from devices;
+ID         |NAME            |IP             |VERSION     |STATUS         |PRODUCT
+
+---------------------------------------------------------------------------------------------------
+2          |SR              |1.1.1.1        |9.3.3       |available      |SR
+
+
+1 row selected
+ij(CONNECTION1)> select * from contact;
+ID         |FIRSTNAME    |LASTNAME     |EMAIL
+---------------------------------------------------------------------------------------------------
+
+0 rows selected
+ij(CONNECTION1)>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

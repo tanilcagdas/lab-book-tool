@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+
+
+<link rel="stylesheet" href="pageDesign3.css" type="text/css" />
+<title>Welcome to EDLAB book tool</title>
+
+<body>
+
+
+	<div class="zx">
+		<div class="fx">
+
+			<!-- 
+<center><form name="wellcome form" action= "servlet" 
+method="post">
+<br>username : <input type="text" name="user" size="7" >
+<br>password : <input type="password" name="pwd" size="7" >
+<input type="hidden" name="action"  value="LOGIN">
+<br><input type="submit" name="submit"  value="log in">
+</form></center>
+ -->
+			<f:view>
+				<center>
+					<h:form>
+						<h:panelGrid border="1" columns="2" style="height:100px; width:300px">
+							<h:outputText value="username"></h:outputText>
+							<h:inputText value="#{indexBean.loginUserName}"></h:inputText>
+							<h:outputText value="password"></h:outputText>
+							<h:inputSecret value="#{indexBean.loginPassword}"></h:inputSecret>
+						</h:panelGrid>
+						<h:commandButton action="#{indexBean.login}" value="login"></h:commandButton>
+
+					</h:form>
+				</center>
+			</f:view>
+		</div>
+
+	</div>
+</body>
+</html>
