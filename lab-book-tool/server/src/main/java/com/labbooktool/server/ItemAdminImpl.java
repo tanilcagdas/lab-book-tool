@@ -1,10 +1,5 @@
 package com.labbooktool.server;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,6 +7,7 @@ import javax.inject.Named;
 
 import com.labbooktool.model.Item;
 import com.labbooktool.repository.HibernateImpl;
+import com.labbooktool.repository.ItemFactory;
 import com.labbooktool.repository.ItemRepository;
 
 @Named

@@ -4,13 +4,11 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.labBookTool</groupId>
+		<groupId>com.labBookTool</groupId>
 		<artifactId>lab-book-tool</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>org.labBookTool</groupId>
 	<artifactId>rest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>rest Jersey Webapp</name>
 
@@ -28,7 +26,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.labBookTool</groupId>
+			<groupId>com.labBookTool</groupId>
 			<artifactId>server</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
