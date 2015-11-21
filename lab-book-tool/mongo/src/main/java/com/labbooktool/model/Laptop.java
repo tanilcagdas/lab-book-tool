@@ -1,5 +1,8 @@
 package com.labbooktool.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Laptop extends Item{
 	
 	private String password;

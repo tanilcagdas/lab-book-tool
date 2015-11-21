@@ -60,7 +60,7 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
 
     @Override
     protected String getMappingBasePackage() {
-        return "com.johnathanmarksmith.mongodb.example.domain";
+        return "com.labbooktool";
     }
 
 }

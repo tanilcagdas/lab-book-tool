@@ -53,7 +53,11 @@ public class LabBookRepository {
 
 	public void insertDevices(List<Device> deviceList) {
 		for (Device device : deviceList) {
-			mongoTemplate.insert(device);
+			try {
+				mongoTemplate.insert(device);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
 			
 		}
 		

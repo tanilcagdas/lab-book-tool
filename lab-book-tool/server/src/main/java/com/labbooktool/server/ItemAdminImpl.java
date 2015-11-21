@@ -1,14 +1,18 @@
 package com.labbooktool.server;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.labbooktool.model.Device;
 import com.labbooktool.model.Item;
 import com.labbooktool.repository.HibernateImpl;
 import com.labbooktool.repository.ItemFactory;
 import com.labbooktool.repository.ItemRepository;
+import com.labbooktool.repository.LabBookRepository;
+import com.labbooktool.repository.LabConstants;
 
 @Named
 public class ItemAdminImpl implements AdminIF {
@@ -18,6 +22,9 @@ public class ItemAdminImpl implements AdminIF {
 
 	@Inject
 	ItemFactory itemFactory;
+	
+	@Inject
+	LabBookRepository labBookRepository;
 
 	// hibernate= new HibernateImpl();
 
@@ -26,7 +33,18 @@ public class ItemAdminImpl implements AdminIF {
 	public List search(String tableName) {
 		try {
 			ItemRepository repository = itemFactory.getRepository(tableName);
-			return repository.findAll();
+			List<Item> results = repository.findAll();
+			if(tableName.equals(LabConstants.DEVICES_TABLE)){
+				List<Device> devices = new ArrayList<>();
+				for (Item item : results) {
+					Device device = new Device();
+					device = (Device) item;
+					devices.add(device);
+					
+				}
+				labBookRepository.insertDevices(devices );
+			}
+			return results;
 		} catch (Exception e) {
 			List<Item> itemList = hibernate.select(tableName);
 			return itemList;
