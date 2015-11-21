@@ -1,0 +1,17 @@
+package com.labbooktool.repository;
+
+import java.util.List;
+
+import com.labbooktool.model.Item;
+
+public interface ItemRepository {
+	
+	List<Item> findAll();
+
+	void release(int id);
+
+	void reserve(int id);
+
+	Item findById(int id);
+
+}
