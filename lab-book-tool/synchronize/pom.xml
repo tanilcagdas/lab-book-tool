@@ -1,29 +1,27 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.labBookTool</groupId>
-    <artifactId>lab-book-tool</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>synchronize</artifactId>
-  <packaging>war</packaging>
-  <name>synchronize Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  
-  <properties>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.labBookTool</groupId>
+		<artifactId>lab-book-tool</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>synchronize</artifactId>
+	<packaging>war</packaging>
+	<name>rest Jersey Webapp</name>
+
+
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.springframework-version>4.1.6.RELEASE</org.springframework-version>
-		<org.springframework-version-sec>3.1.2.RELEASE</org.springframework-version-sec>
-<!-- 		<org.springframework-version>3.1.2.RELEASE</org.springframework-version> -->
+		<org.springframework-version>3.1.2.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.9</org.aspectj-version>
 		<org.aspectj-weaver-version>1.7.0</org.aspectj-weaver-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<log4j.version>1.2.17</log4j.version>
 		<jersey-version>1.14</jersey-version>
 	</properties>
-	
 
 
 	<dependencies>
@@ -56,12 +54,6 @@
 			<artifactId>spring-web</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
-		<dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-webmvc</artifactId>
-        <version>${org.springframework-version}</version>
-    </dependency>
 		<!-- AOP -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -152,24 +144,76 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>${org.springframework-version-sec}</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>${org.springframework-version-sec}</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>${org.springframework-version-sec}</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-aspects</artifactId>
-			<version>${org.springframework-version-sec}</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
 
+		<!-- JPA backend -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.1.0.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-core</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.1.7.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+			<version>4.1.7.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-902.jdbc4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.2.8</version>
+		</dependency>
 
 		<!-- Validation -->
 		<dependency>
@@ -234,6 +278,23 @@
 			</exclusions>
 		</dependency>
 
+		<!-- JSF and PrimeFaces -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.1.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>3.5</version>
+		</dependency>
+		<!-- primefaces theme -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.9</version>
+		</dependency>
 
 		<!-- Test -->
 		<dependency>
@@ -270,18 +331,18 @@
 			<scope>provided</scope>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.atmosphere</groupId> -->
-<!-- 			<artifactId>atmosphere-jersey</artifactId> -->
-<!-- 			<version>1.0.0</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.atmosphere</groupId>
+			<artifactId>atmosphere-jersey</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.atmosphere</groupId> -->
-<!-- 			<artifactId>atmosphere-spring</artifactId> -->
-<!-- 			<version>1.0.0</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.atmosphere</groupId>
+			<artifactId>atmosphere-spring</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>eu.infomas</groupId>
@@ -294,106 +355,6 @@
 			<artifactId>commons-validator</artifactId>
 			<version>1.4.0</version>
 		</dependency>
-		
-		
-
-<!-- 		monimetric -->
-
-<dependency>
-  <groupId>com.fasterxml.jackson.datatype</groupId> 
-  <artifactId>jackson-datatype-jsr310</artifactId> 
-  <version>2.5.4</version>
-  
-  </dependency>
- <dependency>
-  <groupId>com.fasterxml.jackson.dataformat</groupId> 
-  <artifactId>jackson-dataformat-xml</artifactId> 
-  <version>2.5.4</version>
-  </dependency>
- <dependency>
-  <groupId>org.codehaus.woodstox</groupId> 
-  <artifactId>woodstox-core-asl</artifactId> 
-  <version>4.4.1</version> 
-  </dependency>
- <dependency>
-  <groupId>com.google.code.gson</groupId> 
-  <artifactId>gson</artifactId> 
-  <version>2.3.1</version> 
-  </dependency>
- <!--  1. Spring 
-  --> 
- <!--  Core utilities used by other modules. Define this if you use Spring 
-			Utility APIs (org.springframework.core.*/org.springframework.util.*) 
-  --> 
-<!--  <dependency> -->
-<!--   <groupId>org.springframework</groupId>  -->
-<!--   <artifactId>spring-core</artifactId>  -->
-<!--   <version>${spring.version}</version>  -->
-<!--   </dependency> -->
- <!--  Application Context 
-  --> 
- <!-- (depends on spring-core, spring-expression, spring-aop, spring-beans) 
-			This is the central artifact for Spring's Dependency Injection Container 
-			and is generally always defined 
-  --> 
-<!--  <dependency> -->
-<!--   <groupId>org.springframework</groupId>  -->
-<!--   <artifactId>spring-context</artifactId>  -->
-<!--   <version>${spring.version}</version>  -->
-<!--  <exclusions> -->
- <!--  Exclude Commons Logging in favor of SLF4j 
-  --> 
-<!--  <exclusion> -->
-<!--   <groupId>commons-logging</groupId>  -->
-<!--   <artifactId>commons-logging</artifactId>  -->
-<!--   </exclusion> -->
-<!--   </exclusions> -->
-<!--   </dependency> -->
- <!--  Application Context 
-  --> 
-<!--  <dependency> -->
-<!--   <groupId>org.springframework</groupId>  -->
-<!--   <artifactId>spring-webmvc</artifactId>  -->
-<!--   <version>${spring.version}</version>  -->
-<!--   </dependency> -->
-<!--  <dependency> -->
-<!--   <groupId>org.springframework</groupId>  -->
-<!--   <artifactId>spring-web</artifactId>  -->
-<!--   <version>${spring.version}</version>  -->
-<!--   </dependency> -->
-<!--  <dependency> -->
-<!--   <groupId>org.springframework</groupId>  -->
-<!--   <artifactId>spring-context-support</artifactId>  -->
-<!--   <version>${spring.version}</version>  -->
-<!--   </dependency> -->
- <!--  Object relational mapping 
-  --> 
-<!--  <dependency> -->
-<!--   <groupId>org.springframework.security</groupId>  -->
-<!--   <artifactId>spring-security-core</artifactId>  -->
-<!--   <version>${spring.version}</version>  -->
-<!--   </dependency> -->
-<!--  <dependency> -->
-<!--   <groupId>org.springframework.security</groupId>  -->
-<!--   <artifactId>spring-security-web</artifactId> -->
-<!--   <version>${spring.version}</version>   -->
-<!--   </dependency> -->
-<!--  <dependency> -->
-<!--   <groupId>org.springframework.security</groupId> -->
-<!--   <version>${spring.version}</version>   -->
-<!--   <artifactId>spring-security-config</artifactId>  -->
-<!--   </dependency> -->
-<!--  <dependency> -->
-<!--   <groupId>org.springframework.security</groupId> -->
-<!--   <version>${spring.version}</version>   -->
-<!--   <artifactId>spring-security-acl</artifactId>  -->
-<!--   </dependency> -->
-<!--  <dependency> -->
-<!--   <groupId>org.springframework.security</groupId> -->
-<!--   <version>${spring.version}</version>   -->
-<!--   <artifactId>spring-security-taglibs</artifactId>  -->
-<!--   </dependency> -->
-
 
 	</dependencies>
 
@@ -467,4 +428,4 @@
 		</repository>
 	</repositories>
 </project>
-  
+

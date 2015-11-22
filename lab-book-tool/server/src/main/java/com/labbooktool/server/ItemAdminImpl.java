@@ -35,11 +35,11 @@ public class ItemAdminImpl implements AdminIF {
 		try {
 			ItemRepository repository = itemFactory.getRepository(tableName);
 			List<Item> results = repository.findAll();
-			if(tableName.equals(LabConstants.DEVICES_TABLE)){
+			/*if(tableName.equals(LabConstants.DEVICES_TABLE)){
 				List<Device> devices = new ArrayList<>();
 				DevicesConverter.convert(results,devices);
 				labBookRepository.insertDevices(devices );
-			}
+			}*/
 			return results;
 		} catch (Exception e) {
 			List<Item> itemList = hibernate.select(tableName);

@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class SynchronizeQueue  {
 		 
-	    private Queue queue = new ConcurrentLinkedQueue<>();
+	    private Queue queue = new ConcurrentLinkedQueue();
 	 
 	    /**
 	     * Make a blocking Dequeue call so that we'll only return when the queue has

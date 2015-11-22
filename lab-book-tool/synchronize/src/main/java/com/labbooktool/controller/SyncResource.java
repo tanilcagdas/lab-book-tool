@@ -1,33 +1,39 @@
 
-package com.labbooktool.controller; 
-import javax.inject.Inject;
+package com.labbooktool.controller;
+
+import javax.annotation.PostConstruct;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.labbooktool.synchronize.model.RestResponseModel;
 import com.labbooktool.synchronize.service.SynchronizeService;
+import com.labbooktool.util.ApplicationContextProvider;
 
-@RestController
-@RequestMapping(value = "/sync", produces = "application/json")@Component
-//@Path("/sync")
+@Component
+@Path("/sync")
 public class SyncResource {
-	
-	@Inject
+
 	SynchronizeService synchronizeService;
-	
-	@RequestMapping(value = "/fullsync", method = RequestMethod.GET)
+
+	@PostConstruct
+	public void init() {
+		synchronizeService = (SynchronizeService) ApplicationContextProvider.getApplicationContext()
+				.getBean(SynchronizeService.class);
+	}
+
+	@GET
+	@Path("/fullsync")
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public RestResponseModel searchAssigne() {
 
 		synchronizeService.fullSyncDBtoMongo();
 
-		RestResponseModel response = RestResponseModel
-				.createSuccessResponse(null);
+		RestResponseModel response = RestResponseModel.createSuccessResponse(null);
 		return response;
 	}
-	
-	
-	
+
 }

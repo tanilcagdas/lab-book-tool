@@ -26,6 +26,7 @@ import com.labbooktool.model.LaptopListServiceBean;
 import com.labbooktool.repository.LabConstants;
 import com.labbooktool.server.AdminIF;
 import com.labbooktool.server.ItemAdminImpl;
+import com.labbooktool.util.ApplicationContextProvider;
 
 @Component
 @Path("/labBook")
