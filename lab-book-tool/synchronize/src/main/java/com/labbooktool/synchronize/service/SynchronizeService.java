@@ -1,16 +1,11 @@
 package com.labbooktool.synchronize.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.labbooktool.model.Device;
 import com.labbooktool.repository.LabBookMongoRepository;
-import com.labbooktool.repository.LabConstants;
 import com.labbooktool.server.AdminIF;
-import com.labbooktool.util.DevicesConverter;
+import com.labbooktool.synchronize.model.util.SynchronizeQueue;
 
 @Service
 public class SynchronizeService {
@@ -22,10 +17,17 @@ public class SynchronizeService {
 	LabBookMongoRepository mongoRepository;
 	
 	public void fullSyncDBtoMongo(){
-		List results = admin.search(LabConstants.DEVICES_TABLE);
-		List<Device> devices = new ArrayList<>();
-		DevicesConverter.convert(results,devices);
-		mongoRepository.insertDevices(devices);
+		SynchronizeQueue queue = new SynchronizeQueue();
+		
+		Producer producer = new Producer(queue);
+		Thread producerThread = new Thread(producer); 
+		producerThread.start();
+
+		Consumer consumer = new Consumer(queue);
+		Thread consumerThread = new Thread(consumer); 
+		consumerThread.start();
+		
+		
 	}
 
 }
