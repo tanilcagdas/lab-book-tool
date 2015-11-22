@@ -12,6 +12,13 @@
     <packaging>pom</packaging>
 	
 	<modules>
+		<module>synchronize</module>
 		<module>jpa-repository</module>
+		<module>server</module>
+		<module>client</module>
+		<module>documents</module>
+		<module>legend</module>
+		<module>mongo</module>
+		<module>rest</module>
 	</modules>
 </project>
