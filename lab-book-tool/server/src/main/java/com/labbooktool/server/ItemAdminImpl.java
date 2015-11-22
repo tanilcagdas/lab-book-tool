@@ -11,8 +11,9 @@ import com.labbooktool.model.Item;
 import com.labbooktool.repository.HibernateImpl;
 import com.labbooktool.repository.ItemFactory;
 import com.labbooktool.repository.ItemRepository;
-import com.labbooktool.repository.LabBookRepository;
+import com.labbooktool.repository.LabBookMongoRepository;
 import com.labbooktool.repository.LabConstants;
+import com.labbooktool.util.DevicesConverter;
 
 @Named
 public class ItemAdminImpl implements AdminIF {
@@ -24,7 +25,7 @@ public class ItemAdminImpl implements AdminIF {
 	ItemFactory itemFactory;
 	
 	@Inject
-	LabBookRepository labBookRepository;
+	LabBookMongoRepository labBookRepository;
 
 	// hibernate= new HibernateImpl();
 
@@ -36,12 +37,7 @@ public class ItemAdminImpl implements AdminIF {
 			List<Item> results = repository.findAll();
 			if(tableName.equals(LabConstants.DEVICES_TABLE)){
 				List<Device> devices = new ArrayList<>();
-				for (Item item : results) {
-					Device device = new Device();
-					device = (Device) item;
-					devices.add(device);
-					
-				}
+				DevicesConverter.convert(results,devices);
 				labBookRepository.insertDevices(devices );
 			}
 			return results;

@@ -34,7 +34,7 @@ public class LabBookRepositoryTest {
 	// nosql-unit requirement
 	@Autowired private ApplicationContext applicationContext;
 	
-	@Autowired private LabBookRepository labBookRepository;
+	@Autowired private LabBookMongoRepository labBookRepository;
 
 
 	@Test
