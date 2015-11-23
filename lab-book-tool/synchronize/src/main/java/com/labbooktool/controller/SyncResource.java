@@ -9,9 +9,9 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
 
+import com.labbooktool.ApplicationContextProvider;
 import com.labbooktool.synchronize.model.RestResponseModel;
 import com.labbooktool.synchronize.service.SynchronizeService;
-import com.labbooktool.util.ApplicationContextProvider;
 
 @Component
 @Path("/sync")

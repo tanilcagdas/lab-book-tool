@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.labbooktool.repository.LabBookMongoRepository;
 import com.labbooktool.server.AdminIF;
+import com.labbooktool.synchronize.model.util.Consumer;
+import com.labbooktool.synchronize.model.util.Producer;
 import com.labbooktool.synchronize.model.util.SynchronizeQueue;
 
 @Service

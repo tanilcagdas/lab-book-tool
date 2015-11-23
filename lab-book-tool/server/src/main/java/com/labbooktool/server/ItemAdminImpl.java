@@ -6,14 +6,12 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.labbooktool.model.Device;
 import com.labbooktool.model.Item;
 import com.labbooktool.repository.HibernateImpl;
 import com.labbooktool.repository.ItemFactory;
 import com.labbooktool.repository.ItemRepository;
 import com.labbooktool.repository.LabBookMongoRepository;
 import com.labbooktool.repository.LabConstants;
-import com.labbooktool.util.DevicesConverter;
 
 @Named
 public class ItemAdminImpl implements AdminIF {
@@ -27,19 +25,12 @@ public class ItemAdminImpl implements AdminIF {
 	@Inject
 	LabBookMongoRepository labBookRepository;
 
-	// hibernate= new HibernateImpl();
 
-	@SuppressWarnings("rawtypes")
 	@Override
-	public List search(String tableName) {
+	public List<Item> search(String tableName) {
 		try {
 			ItemRepository repository = itemFactory.getRepository(tableName);
 			List<Item> results = repository.findAll();
-			/*if(tableName.equals(LabConstants.DEVICES_TABLE)){
-				List<Device> devices = new ArrayList<>();
-				DevicesConverter.convert(results,devices);
-				labBookRepository.insertDevices(devices );
-			}*/
 			return results;
 		} catch (Exception e) {
 			List<Item> itemList = hibernate.select(tableName);
@@ -55,14 +46,16 @@ public class ItemAdminImpl implements AdminIF {
 
 	@Override
 	public void delete(Object obj) {
-		// TODO Auto-generated method stub
+		hibernate.delete(obj);
 
 	}
 
 	@Override
-	public List search() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Item> findAll() {
+		List<Item>  all = new ArrayList<Item>();
+		all.addAll(search(LabConstants.DEVICES_TABLE));
+		all.addAll(search(LabConstants.LAPTOPS_TABLE));
+		return all;
 	}
 
 	@Override

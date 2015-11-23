@@ -2,3 +2,13 @@ deploy client and rest
 start tomcat
 url: http://localhost:8080/client/faces/index.xhtmls
 mongod -dbpath d:/data
+
+tomcat JDBC
+server:
+<Resource name="jdbc/labDB" type="javax.sql.DataSource"  auth="Container" description="Derby database for labDB" maxActive="100" maxIdle="30" 
+maxWait="10000" username="app" password="app" driverClassName="org.apache.derby.jdbc.EmbeddedDriver"url="jdbc:derby:labDB;create=true"/>
+              
+context: 
+<ResourceLink auth="Container" global="jdbc/labDB" name="jdbc/labDB" type="javax.sql.DataSource" />
+              
+              

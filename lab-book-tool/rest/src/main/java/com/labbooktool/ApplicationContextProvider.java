@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ApplicationContextProviderOld implements ApplicationContextAware {
+public class ApplicationContextProvider implements ApplicationContextAware {
    private static ApplicationContext ctx = null;
 
    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

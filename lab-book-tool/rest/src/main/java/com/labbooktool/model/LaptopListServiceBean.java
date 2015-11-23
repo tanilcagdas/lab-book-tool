@@ -7,13 +7,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class LaptopListServiceBean {
 
-	private List<Laptop> laptopList;
+	private List<Item> laptopList;
 
-	public List<Laptop> getLaptopList() {
+	public List<Item> getLaptopList() {
 		return laptopList;
 	}
 
-	public void setLaptopList(List<Laptop> laptopList) {
+	public void setLaptopList(List<Item> laptopList) {
 		this.laptopList = laptopList;
 	}
 

@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.labbooktool.model.Device;
+import com.labbooktool.model.Item;
 
 
 
@@ -58,9 +59,17 @@ public class LabBookMongoRepository {
 			} catch (Exception e) {
 				logger.error(e.getMessage());
 			}
-			
 		}
-		
+	}
+
+	public void insertItems(List<Item> itemList) {
+		for (Item item : itemList) {
+			try {
+				mongoTemplate.insert(item);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		}
 	}
 
 
