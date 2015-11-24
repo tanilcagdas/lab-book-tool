@@ -89,5 +89,24 @@ public class HibernateImpl extends BaseRepository {
 			getSession().save(obj);
 		}
 	}
+	private void deleteSingleObject(Object obj) {
+		if (obj instanceof Device || obj instanceof Laptop) {
+			getSession().delete(obj);
+		}
+	}
+
+	public void delete(Object obj) {
+		Transaction tran = getSession().beginTransaction();
+		if (obj instanceof List) {
+			for (Object obj1 : (List) obj) {
+				deleteSingleObject(obj1);
+			}
+		} else {
+			deleteSingleObject(obj);
+		}
+		tran.commit();
+		getSession().close();
+		
+	}
 
 }
