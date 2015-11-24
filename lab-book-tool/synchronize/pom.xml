@@ -10,7 +10,7 @@
 	</parent>
 	<artifactId>synchronize</artifactId>
 	<packaging>war</packaging>
-	<name>rest Jersey Webapp</name>
+	<name>synchronize Webapp</name>
 
 
 	<properties>
