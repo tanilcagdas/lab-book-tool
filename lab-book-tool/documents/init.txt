@@ -1,8 +1,15 @@
-deploy client and rest
+deploy client angular-client rest synchronize
 start tomcat
-url: http://localhost:8080/client/faces/index.xhtmls
-mongod -dbpath d:/data
+url: 
+http://localhost:8080/client/faces/index.xhtmls
+http://localhost:8080/angular-client/index.html#/devices
+http://localhost:8080/synchronize/webresources/sync/fullsync
 
+windows:
+mongod -dbpath d:/data
+macos:
+ ./mongod -dbpath ../data
+ 
 tomcat JDBC
 server:
 <Resource name="jdbc/labDB" type="javax.sql.DataSource"  auth="Container" description="Derby database for labDB" maxActive="100" maxIdle="30" 
