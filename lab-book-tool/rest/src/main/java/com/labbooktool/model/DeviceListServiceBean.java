@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class DeviceListServiceBean {
 
-	private List<Item> deviceList;
+	private List<Device> deviceList;
 
 	/**
 	 * @return the deviceList
 	 */
-	public List<Item> getDeviceList() {
+	public List<Device> getDeviceList() {
 		return deviceList;
 	}
 
@@ -20,7 +20,7 @@ public class DeviceListServiceBean {
 	 * @param deviceList
 	 *            the deviceList to set
 	 */
-	public void setDeviceList(List<Item> deviceList) {
+	public void setDeviceList(List<Device> deviceList) {
 		this.deviceList = deviceList;
 	}
 

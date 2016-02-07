@@ -17,10 +17,11 @@ public class ItemFactory {
 	LaptopDaoImpl laptopDaoImpl;
 
 	public ItemRepository getRepository(String tableName) {
-		switch (tableName) {
-		case LabConstants.DEVICES_TABLE:
+		TableEnum tableEnum = TableEnum.valueOf(tableName);
+		switch (tableEnum) {
+		case DEVICES:
 			return deviceDaoImpl;
-		case LabConstants.LAPTOPS_TABLE:
+		case LAPTOPS:
 			return laptopDaoImpl;
 			
 
@@ -28,6 +29,14 @@ public class ItemFactory {
 			break;
 		}
 		return null;
+	}
+	
+	private enum TableEnum{
+		DEVICES,LAPTOPS;
+		
+		public TableEnum fromString(String tableName){
+			return valueOf(tableName);
+		}
 	}
 
 }

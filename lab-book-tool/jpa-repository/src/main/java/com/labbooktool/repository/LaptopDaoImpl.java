@@ -8,6 +8,7 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 import org.hibernate.Criteria;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,10 +39,17 @@ public class LaptopDaoImpl extends BaseRepository implements LaptopDaoIf {
 
 	private List<Item> itemList;
 
-	@Override
 	public List<Item> findAll() {
 		try {
 			Criteria criteria = getSession().createCriteria(Laptop.class);
+			if (criteria.list().isEmpty()) {
+				Laptop laptop = new Laptop();
+				laptop.setName("test");
+				laptop.setStatus("available");
+				add(laptop);
+			}
+			
+			
 			return criteria.list();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -49,7 +57,14 @@ public class LaptopDaoImpl extends BaseRepository implements LaptopDaoIf {
 		return null;
 	}
 	
-	@Override
+	@Transactional
+	public void add(Item item){
+//		Transaction transaction = getSession().getTransaction();
+		getSession().save(item);
+		getSession().flush();
+//		transaction.commit();
+	}
+	
 	public  Item findById(int id) {
 		try {
 			Criteria criteria = getSession().createCriteria(Laptop.class);
@@ -62,24 +77,24 @@ public class LaptopDaoImpl extends BaseRepository implements LaptopDaoIf {
 		return null;
 	}
 
-	@Override
 	public void release(int id) {
 
 		Criteria criteria = getSession().createCriteria(Laptop.class);
 		criteria.add(Restrictions.eq("id", id));
 		Laptop laptop = (Laptop) criteria.uniqueResult();
-		laptop.setStatus("release");
+		laptop.setStatus(LabConstants.AVAILABLE);
 		getSession().save(laptop);
+		getSession().flush();
 	}
 
-	@Override
-	public void reserve(int id) {
+	public void reserve(int id, String username) {
 
 		Criteria criteria = getSession().createCriteria(Laptop.class);
 		criteria.add(Restrictions.eq("id", id));
 		Laptop laptop = (Laptop) criteria.uniqueResult();
-		laptop.setStatus("reserve");
+		laptop.setStatus(username);
 		getSession().save(laptop);
+		getSession().flush();
 	}
 
 }

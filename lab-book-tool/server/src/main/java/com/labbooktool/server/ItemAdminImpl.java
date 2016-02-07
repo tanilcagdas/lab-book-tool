@@ -6,6 +6,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.labbooktool.model.Item;
 import com.labbooktool.repository.HibernateImpl;
 import com.labbooktool.repository.ItemFactory;
@@ -15,6 +18,8 @@ import com.labbooktool.repository.LabConstants;
 
 @Named
 public class ItemAdminImpl implements AdminIF {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ItemAdminImpl.class);
 
 	@Inject
 	HibernateImpl hibernate;
@@ -27,10 +32,13 @@ public class ItemAdminImpl implements AdminIF {
 
 
 	@Override
-	public List<Item> search(String tableName) {
+	public List<? extends Item> search(String tableName) {
 		try {
 			ItemRepository repository = itemFactory.getRepository(tableName);
 			List<Item> results = repository.findAll();
+			logger.debug("debug test");
+//			logger.info("info test");
+//			logger.error("error test");
 			return results;
 		} catch (Exception e) {
 			List<Item> itemList = hibernate.select(tableName);
@@ -93,7 +101,7 @@ public class ItemAdminImpl implements AdminIF {
 				}
 			} else if (!user.equalsIgnoreCase(compareStatus) & command.equalsIgnoreCase("reserve") || user.equalsIgnoreCase("admin") & command.equalsIgnoreCase("reserve")) {
 				try {
-					repository.reserve(id);
+					repository.reserve(id, user);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

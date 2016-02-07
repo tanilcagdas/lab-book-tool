@@ -11,7 +11,7 @@ public interface AdminIF {
 	
 	public void delete(Object obj);
 
-	public List<Item> search(String tableName);
+	public List<? extends Item> search(String tableName);
 	
 	public void reserve(String user, int id,String tableName )throws ClassNotFoundException ;
 

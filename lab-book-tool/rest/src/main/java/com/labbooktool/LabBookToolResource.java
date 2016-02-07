@@ -21,7 +21,6 @@ import org.springframework.stereotype.Component;
 
 import com.labbooktool.model.Device;
 import com.labbooktool.model.DeviceListServiceBean;
-import com.labbooktool.model.Item;
 import com.labbooktool.model.Laptop;
 import com.labbooktool.model.LaptopListServiceBean;
 import com.labbooktool.repository.LabConstants;
@@ -48,12 +47,9 @@ public class LabBookToolResource {
 	public DeviceListServiceBean queryDevices(@DefaultValue("0") @QueryParam("start") int start,
             @DefaultValue("10") @QueryParam("size") int size,
             @QueryParam("name") String deviceName,@Context HttpServletRequest req, @HeaderParam(value = "username") String username) throws ClassNotFoundException{
-		List<Item> itemList = admin.search(LabConstants.DEVICES_TABLE);
+		List<Device> itemList = (List<Device>) admin.search(LabConstants.DEVICES_TABLE);
 		DeviceListServiceBean deviceListServiceBean = new DeviceListServiceBean();
 		deviceListServiceBean.setDeviceList(itemList);
-		String user = req.getRemoteUser();
-		admin.reserve(username, deviceListServiceBean.getDeviceList().get(0).getId(), LabConstants.DEVICES_TABLE);
-		admin.release(username, deviceListServiceBean.getDeviceList().get(0).getId(), LabConstants.DEVICES_TABLE);
 		return deviceListServiceBean ;
 	}
 	@GET
@@ -62,7 +58,7 @@ public class LabBookToolResource {
 	public LaptopListServiceBean queryLaptops(@DefaultValue("0") @QueryParam("start") int start,
 			@DefaultValue("10") @QueryParam("size") int size,
 			@QueryParam("name") String deviceName){
-		List<Item> itemList = admin.search(LabConstants.LAPTOPS_TABLE);
+		List<Laptop> itemList = (List<Laptop>) admin.search(LabConstants.LAPTOPS_TABLE);
 
 		LaptopListServiceBean laptopListServiceBean = new LaptopListServiceBean();
 		laptopListServiceBean.setLaptopList(itemList);
@@ -75,7 +71,7 @@ public class LabBookToolResource {
 	public DeviceListServiceBean reserveDevice(@DefaultValue("0") @QueryParam("start") int start,
             @DefaultValue("10") @QueryParam("size") int size,
             @QueryParam("name") String deviceName,@Context HttpServletRequest req, @HeaderParam(value = "username") String username) throws ClassNotFoundException{
-		List<Item> itemList = admin.search(LabConstants.DEVICES_TABLE);
+		List<Device> itemList = (List<Device>) admin.search(LabConstants.DEVICES_TABLE);
 		DeviceListServiceBean deviceListServiceBean = new DeviceListServiceBean();
 		deviceListServiceBean.setDeviceList(itemList);
 		String user = req.getRemoteUser();
@@ -89,7 +85,7 @@ public class LabBookToolResource {
 	public DeviceListServiceBean releaseDevice(@DefaultValue("0") @QueryParam("start") int start,
 			@DefaultValue("10") @QueryParam("size") int size,
 			@QueryParam("name") String deviceName,@Context HttpServletRequest req, @HeaderParam(value = "username") String username) throws ClassNotFoundException{
-		List<Item> itemList = admin.search(LabConstants.DEVICES_TABLE);
+		List<Device> itemList = (List<Device>) admin.search(LabConstants.DEVICES_TABLE);
 		DeviceListServiceBean deviceListServiceBean = new DeviceListServiceBean();
 		deviceListServiceBean.setDeviceList(itemList);
 		String user = req.getRemoteUser();

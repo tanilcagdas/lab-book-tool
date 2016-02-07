@@ -54,7 +54,7 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
          * This is for a relset of db's
          */
 
-        return new Mongo(new ArrayList<ServerAddress>() {{ add(new ServerAddress("127.0.0.1", 27017)); add(new ServerAddress("127.0.0.1", 27027)); add(new ServerAddress("127.0.0.1", 27037)); }});
+        return new Mongo(new ArrayList<ServerAddress>() {{ add(new ServerAddress("localhost", 27017)); add(new ServerAddress("localhost", 27027)); add(new ServerAddress("localhost", 27037)); }});
 
     }
 

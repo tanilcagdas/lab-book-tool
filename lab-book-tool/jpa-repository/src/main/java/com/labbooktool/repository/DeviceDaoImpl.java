@@ -43,7 +43,6 @@ public class DeviceDaoImpl extends BaseRepository implements DeviceDaoIf{
 	
 	private  List<Item> itemList;
 
-	@Override
 	public  List<Item> findAll() {
 		try {
 				Criteria criteria = getSession().createCriteria(Device.class);
@@ -54,7 +53,6 @@ public class DeviceDaoImpl extends BaseRepository implements DeviceDaoIf{
 		return itemList;
 	}
 
-	@Override
 	public  Item findById(int id) {
 		try {
 			Criteria criteria = getSession().createCriteria(Device.class);
@@ -67,24 +65,24 @@ public class DeviceDaoImpl extends BaseRepository implements DeviceDaoIf{
 		return null;
 	}
 
-	@Override
 	public  void release(int id) {
 		
 		Criteria criteria = getSession().createCriteria(Device.class);
 		criteria.add(Restrictions.eq("id", id));
 		Device device = (Device) criteria.uniqueResult();
-		device.setStatus("release");
+		device.setStatus(LabConstants.AVAILABLE);
+		getSession().flush();
 		getSession().save(device);
 	}
 
-	@Override
-	public  void reserve(int id) {
+	public  void reserve(int id, String username) {
 		
 		Criteria criteria = getSession().createCriteria(Device.class);
 		criteria.add(Restrictions.eq("id", id));
 		Device device = (Device) criteria.uniqueResult();
-		device.setStatus("reserve");
+		device.setStatus(username);
 		getSession().save(device);
+		getSession().flush();
 	}
 
 	public void add(Object obj) {
@@ -109,6 +107,7 @@ public class DeviceDaoImpl extends BaseRepository implements DeviceDaoIf{
 			getSession().save(obj);
 			}
 	}
+
 
 }
 

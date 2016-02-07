@@ -76,7 +76,7 @@ public class LabBookToolClient {
 		} catch (Exception e) {
 			Logger.getLogger(this.getClass()).log(Level.SEVERE, "LabBookToolClient.getDevices() exception occured", e);
 		}
-		return new ArrayList<>();
+		return new ArrayList<Laptop>();
 	}
 
 	public void reserve(String selectorUser, int selectedID, String selectedTable) {

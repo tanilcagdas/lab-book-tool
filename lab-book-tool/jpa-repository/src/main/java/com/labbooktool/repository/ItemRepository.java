@@ -10,7 +10,7 @@ public interface ItemRepository {
 
 	void release(int id);
 
-	void reserve(int id);
+	void reserve(int id, String username);
 
 	Item findById(int id);
 
