@@ -42,12 +42,12 @@ public class LaptopDaoImpl extends BaseRepository implements LaptopDaoIf {
 	public List<Item> findAll() {
 		try {
 			Criteria criteria = getSession().createCriteria(Laptop.class);
-			if (criteria.list().isEmpty()) {
-				Laptop laptop = new Laptop();
-				laptop.setName("test");
-				laptop.setStatus("available");
-				add(laptop);
-			}
+//			if (criteria.list().isEmpty()) {
+//				Laptop laptop = new Laptop();
+//				laptop.setName("test");
+//				laptop.setStatus("available");
+//				add(laptop);
+//			}
 			
 			
 			return criteria.list();

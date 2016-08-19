@@ -1,55 +1,58 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.labBookTool</groupId>
-    <artifactId>lab-book-tool</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>jaxws</artifactId>
-  <packaging>war</packaging>
-  <name>jaxws Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  
-    <properties>
-        <jaxws-maven-plugin.version>2.2</jaxws-maven-plugin.version>
-    </properties>
-    
- <build>
-        <plugins>
-            <plugin>
-                <groupId>org.jvnet.jax-ws-commons</groupId>
-                <artifactId>jaxws-maven-plugin</artifactId>
-                <version>${jaxws-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>generate-wsdl</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>wsgen</goal>
-                        </goals>
-                        <configuration>
-                            <sei>com.labbooktool.services.helloservice.Hello</sei>
-                            <genWsdl>true</genWsdl>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <configuration>
-                    <deployables>
-                        <deployable>
-                        <properties>
-                            <context>helloservice</context>
-                        </properties>
-                        </deployable>
-                    </deployables>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.labBookTool</groupId>
+		<artifactId>lab-book-tool</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>jaxws</artifactId>
+	<packaging>war</packaging>
+	<name>jaxws Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<jaxws-maven-plugin.version>2.2</jaxws-maven-plugin.version>
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.jvnet.jax-ws-commons</groupId>
+					<artifactId>jaxws-maven-plugin</artifactId>
+					<version>${jaxws-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>generate-wsdl</id>
+							<phase>process-classes</phase>
+							<goals>
+								<goal>wsgen</goal>
+							</goals>
+							<configuration>
+								<sei>com.labbooktool.services.helloservice.Hello</sei>
+								<genWsdl>true</genWsdl>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+					<configuration>
+						<deployables>
+							<deployable>
+								<properties>
+									<context>helloservice</context>
+								</properties>
+							</deployable>
+						</deployables>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
 </project>

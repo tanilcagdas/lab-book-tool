@@ -11,7 +11,7 @@ public interface LabBookToolServiceIF {
 	
     @Oneway
     @RequestWrapper(localName = "deviceResponse", targetNamespace = "http://com/labbooktool/messages", className = "com.labbooktool.EnerjiKesintisiBildirimiResponse")
-    @WebMethod(action = "http://www.siemens.com/aydem_osos_ws/enerjiKesintisiBildirimiResponse")
+    @WebMethod(action = "urlResponse")
     public void getDevice(
 //        @WebParam(name = "replyHeader", targetNamespace = "http://www.siemens.com/aydem_osos_ws/messages")
 //        com.siemens.aydem_osos_ws.messages.ReplyHeader replyHeader
