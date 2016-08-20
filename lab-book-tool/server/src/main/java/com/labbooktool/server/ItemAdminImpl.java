@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
 
 import com.labbooktool.model.Item;
 import com.labbooktool.repository.HibernateImpl;
@@ -17,6 +18,7 @@ import com.labbooktool.repository.LabBookMongoRepository;
 import com.labbooktool.repository.LabConstants;
 
 @Named
+@Profile("test")
 public class ItemAdminImpl implements AdminIF {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ItemAdminImpl.class);

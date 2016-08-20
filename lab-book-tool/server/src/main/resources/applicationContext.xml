@@ -9,5 +9,11 @@
 
 	<context:component-scan base-package="org.labbook" />
 	<context:annotation-config />
+	
+	
+	 <context:property-placeholder location="classpath*:/application.properties" />
+	 <context:property-override location="classpath*:/application.properties"/>
+ 
+	
 
 </beans>

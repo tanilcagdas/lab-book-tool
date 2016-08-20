@@ -3,8 +3,6 @@ package com.labbooktool;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
@@ -25,19 +23,24 @@ import com.labbooktool.model.Laptop;
 import com.labbooktool.model.LaptopListServiceBean;
 import com.labbooktool.repository.LabConstants;
 import com.labbooktool.server.AdminIF;
-import com.labbooktool.server.ItemAdminImpl;
+import com.labbooktool.server.ItemServiceDummyImpl;
 
 @Component
 @Path("/labBook")
 public class LabBookToolResource {
 	
-	@Inject
-	@Named("itemAdminImpl")
+//	@Inject
+//	@Named("ItemServiceDummyImpl")
 	AdminIF admin;
 	
 	@PostConstruct
 	public void init(){
-		admin = (ItemAdminImpl) ApplicationContextProvider.getApplicationContext().getBean(ItemAdminImpl.class);
+//		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+		admin = (ItemServiceDummyImpl) ApplicationContextProvider.getApplicationContext().getBean("ItemServiceDummyImpl");
+	}
+	
+	public LabBookToolResource() {
+		System.setProperty("spring.profiles.active", "dummy");
 	}
 	
 
