@@ -3,6 +3,8 @@ package com.labbooktool;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
@@ -16,6 +18,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.labbooktool.model.Device;
 import com.labbooktool.model.DeviceListServiceBean;
@@ -23,20 +26,19 @@ import com.labbooktool.model.Laptop;
 import com.labbooktool.model.LaptopListServiceBean;
 import com.labbooktool.repository.LabConstants;
 import com.labbooktool.server.AdminIF;
-import com.labbooktool.server.ItemServiceDummyImpl;
 
 @Component
 @Path("/labBook")
 public class LabBookToolResource {
 	
-//	@Inject
+	@Inject
 //	@Named("ItemServiceDummyImpl")
 	AdminIF admin;
 	
 	@PostConstruct
 	public void init(){
-//		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-		admin = (ItemServiceDummyImpl) ApplicationContextProvider.getApplicationContext().getBean("ItemServiceDummyImpl");
+		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+//		admin = (ItemServiceDummyImpl) ApplicationContextProvider.getApplicationContext().getBean("ItemServiceDummyImpl");
 	}
 	
 	public LabBookToolResource() {

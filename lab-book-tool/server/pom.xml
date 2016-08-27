@@ -21,6 +21,18 @@
 		<log4j.version>1.2.17</log4j.version>
 		<jersey-version>1.14</jersey-version>
 	</properties>
+	
+	<profiles>
+		<profile>
+			<id>test</id>
+			<properties>
+				<env>test</env>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
 
 
 	<dependencies>

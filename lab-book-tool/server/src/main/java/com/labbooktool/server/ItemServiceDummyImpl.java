@@ -17,7 +17,7 @@ import com.labbooktool.model.Laptop;
 import com.labbooktool.repository.LabConstants;
 
 @Named("ItemServiceDummyImpl")
-//@Profile("dummy")
+@Profile("dummy")
 public class ItemServiceDummyImpl implements AdminIF {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ItemServiceDummyImpl.class);
