@@ -64,7 +64,7 @@ app.controller('devicesCtrl', function($scope, $http) {
 			 data: { test: 'test' }
 			}
 	$http(req).then(function(response) {
-		$scope.devices = response.data;
+		$scope.devices = response.data.deviceList;
 		console.log($scope.devices)
 		
 	}, function errorCallback(response) {
@@ -87,7 +87,7 @@ app.controller('devicesCtrl', function($scope, $http) {
 	
 	 $scope.reserve = function() {
 		 $http(reserveReq).then(function(response) {
-				$scope.devices = response.data;
+				$scope.devices = response.data.deviceList;
 				console.log($scope.devices)
 				
 			}, function errorCallback(response) {
@@ -111,7 +111,7 @@ app.controller('devicesCtrl', function($scope, $http) {
 	    
 	    $scope.release = function() {
 	    	$http(releaseReq).then(function(response) {
-	    		$scope.devices = response.data;
+	    		$scope.devices = response.data.deviceList;
 	    		console.log($scope.devices)
 	    		
 	    	}, function errorCallback(response) {
@@ -136,7 +136,7 @@ app.controller('laptopCtrl', function($scope, $http) {
 			}
 //	$http.get("http://localhost:8080/rest/webresources/labBook/device").
 	$http(req).then(function(response) {
-		$scope.laptops = response.data;
+		$scope.laptops = response.data.laptopList;
 		console.log($scope.laptops)
 		
 	}, function errorCallback(response) {
